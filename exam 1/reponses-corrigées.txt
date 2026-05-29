@@ -1,0 +1,55 @@
+Question 0x00
+
+- Mettre ici votre nom et prénom -
+
+Question 0x01
+- un bus parallèle
+
+Question 0x02
+- parce que les instructions ont une taille maximale de 32 bits, paramètres compris
+
+Question 0x03
+- me brosser, on ne peut pas augmenter la taille des registres du CPU
+
+Question 0x04
+- ce qui gère l'accès à la mémoire
+
+Question 0x11
+
+- erreur 1 : numéro de la ligne en erreur : 7
+- erreur 1 : correction de la ligne : STR R0, [R11, #-4x*2]
+- erreur 2 : numéro de la ligne en erreur : 46
+- erreur 2 : correction de la ligne : STR R0, [R13]
+
+Question 0x12 
+
+Adresse     Valeur      Nom                                 Signification    
+FF000000 ----------------------------------------------------------------------- BP
+FEFFFFFC      3         bun                                 variable locale main
+FEFFFFF8      5         oven                                variable locale main
+FEFFFFF4      11        result                              variable locale main
+FEFFFFF0      3         fold                                parametre knead
+FEFFFFEC      5         glide                               parametre knead
+FEFFFFE8      11                                            valeur retour knead
+FEFFFFE4      11        dough                               parametre croissantStorm
+FEFFFFE0                                                    valeur retour croissantStorm
+FEFFFFDC                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFD8                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFD4                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFD0                                                    save croissantStorm (r0, r1, r11, lr) BP
+FEFFFFCC      18        layers                              variable locale croissantStorm
+FEFFFFC8      18        dough (2)                           parametre croissantStorm (2)
+FEFFFFC4      25                                            valeur retour croissantStorm (2)
+FEFFFFC0                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFBC                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFB8                                                    save croissantStorm (r0, r1, r11, lr)
+FEFFFFB4                                                    save croissantStorm (r0, r1, r11, lr) BP
+FEFFFFB0      25        layers (2)                          variable locale croissantStorm (2)
+FEFFFFAC
+FEFFFFA8
+
+Question 0x13
+
+Valeur affichée : 
+25
+

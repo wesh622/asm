@@ -1,0 +1,50 @@
+Question 0x00
+
+- Mettre ici votre nom et prénom -
+
+Question 0x01
+
+Question 0x02
+
+Question 0x03
+
+Question 0x04
+
+Question 0x11
+
+- erreur 1 : numéro de la ligne en erreur : 
+- erreur 1 : correction de la ligne : 
+- erreur 2 : numéro de la ligne en erreur : 
+- erreur 2 : correction de la ligne : 
+
+Question 0x12 
+
+Adresse     Valeur      Nom                                 Signification    
+FF000000 ----------------------------------------------------------------------- BP SP
+FEFFFFFC      10        camera                              variable locale main
+FEFFFFF8
+FEFFFFF4
+FEFFFFF0
+FEFFFFEC
+FEFFFFE8
+FEFFFFE4
+FEFFFFE0
+FEFFFFDC
+FEFFFFD8
+FEFFFFD4
+FEFFFFD0
+FEFFFFCC
+FEFFFFC8
+FEFFFFC4
+FEFFFFC0
+FEFFFFBC
+FEFFFFB8
+FEFFFFB4
+FEFFFFB0
+FEFFFFAC
+FEFFFFA8
+
+Question 0x13
+
+Valeur affichée : 
+
