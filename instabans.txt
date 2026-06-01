@@ -1,0 +1,99 @@
+aucune différence valeur/instruction/adresses
+bus -> parralèle
+4 octets -> les 2 bus
+dynamique -> pas dans la pile
+structure de la pile inventée -> appels de fonctions empile quand on sort dépile
+accès le plus rapide -> registre (CPU), 
+mémoire (barretes de RAM) -> plus lent
+instructions d'un programme stockées dans la mémoire (pages avec attribut spécial)
+CPU 32 bits -> taille mémoire adressable maximale 4GO 
+CPU 8 bits -> 2^8 = 256 octets
+architecture ARM 32 bits -> 1 octet = 8 bits
+pk certaines instructions ASM 32 bits ne peut pas utiliser certaines valeurs immédiates en paramètre ? 
+-> certaines instructions ont une taille de 32 bits paramètres compris (24 bits instructions, 8 bits valeur)
+augmenter le nombre de registre du CPU -> on peut pas, c'est lié aux caractéristiques physiques du CPU.
+MMU -> gère la mémoire.
+PC -> adresse mémoire de la prochaine instruction
+LR -> adresse mémoire de l'instruction où tu veux revenir (BL)
+programme C compilé ARM 32 bits transformé -> instructions binaires. 
+dans la mémoire, les sstacks frames -> s'empilent.
+BP -> c'est là où on revient.
+SP -> là où est la pile.
+Dans une architecture ARM 32 bits, la taille d’un mot mémoire est :
+- 4 octets
+
+Pourquoi ne peut-on pas utiliser toutes les valeurs immédiates en assembleur ARM ?
+- Parce que le format des instructions limite les valeurs encodables
+
+Parmi les instructions suivantes, laquelle permet d'appliquer un masque binaire pour tester un bit précis d'un registre ?
+- AND r0, r1, #8
+
+Question 1 : Philosophie RISC (Load/Store)
+Vous voulez additionner deux valeurs (A et B) qui sont stockées dans la mémoire vive (RAM) et y remettre le résultat. Comment le processeur ARM procède-t-il ?
+l charge d'abord les valeurs dans des registres avec LDR, fait l'addition avec ADD, puis remet le résultat en mémoire avec STR.
+
+Dans un processeur ARM 32 bits, quelle est la taille de l'instruction B LOOP par rapport à l'instruction complexe ADD r1, r2, r3, LSL #2 
+B) Elles font exactement la même taille : 32 bits (4 octets).
+
+Dans une architecture 32 bits, vous voulez lire un "mot" entier (4 octets) en mémoire. Parmi ces adresses, laquelle va provoquer une erreur matérielle (Data Abort) ?
+Un mot fait 4 octets. Le processeur lit la mémoire par blocs de 4. Les adresses valides pour lire un mot complet sont donc toujours des multiples de 4 (0, 4, 8, C, 10, 14...). L'adresse 0x0000000E n'est pas un multiple de 4, le CPU va planter.
+
+Le processeur vient d'effectuer l'opération 0 - 1. Que contient le registre de destination (sur 32 bits) ?
+Le processeur ne connaît pas le signe moins. Pour faire -1, il prend 1 (0x00000001), inverse tous les bits (0xFFFFFFFE), et ajoute 1. Résultat : 0xFFFFFFFF. C'est l'encodage universel des entiers négatifs.
+
+otre CPU est configuré en mode Little Endian. Vous écrivez le mot de 32 bits 0xAABBCCDD à l'adresse mémoire 0x1000. Que trouve-t-on exactement à l'adresse 0x1000 (le tout premier octet) ?
+B) 0xDD (l'octet de poids faible)
+
+Laquelle de ces instructions est strictement équivalente à multiplier le registre r1 par 8
+Faire un Logical Shift Left (LSL) décale les bits vers la gauche. Décaler de 1 bit multiplie par 2. Décaler de 2 bits multiplie par 4. Décaler de 3 bits multiplie par 8 (23=8). La réponse C multiplierait par 256 !
+
+'instruction ORR effectue une opération logique "OU" (bit à bit) entre un registre et une valeur.
+L'instruction ROR ne fait pas de calcul logique, elle "décale" physiquement les bits vers la droite, mais en boucle.
+La boucle : Contrairement à un décalage classique (LSR) où les bits qui "tombent" à droite disparaissent dans le vide, avec ROR, les bits qui tombent à droite sont réinjectés tout à gauche du registre.
+À quoi ça sert en pratique ? Puisqu'on décale de 8 bits (ce qui correspond exactement à 1 octet), cette instruction permet de faire "tourner" les octets. L'octet qui était tout en bas (poids faible) passe tout en haut (poids fort). C'est très utilisé en cryptographie ou pour réorganiser des données en mémoire.
+Faire une rotation à gauche de X crans revient très exactement à faire une rotation à droite de 32 - X crans.
+
+Complex Instruction Set Computer
+C’est l’architecture initiale des CPUs, et toujours celle des CPU Intel. Les
+instructions peuvent faire plusieurs choses complexes à la fois, et ont une
+taille variable. Généralement le processeur utilise du microcode pour
+transformer les instructions et cela pose des problèmes d’optimisations
+et de dissipation d’énergie.
+
+Reduced Instruction Set Computer
+Au départ réservée aux processeurs des stations de travail, c’est
+l’architecture des processeurs ARM. Les instructions font toutes la même
+taille et ne font que des opérations simples. Cela demande plus
+d’instructions pour faire la même chose et est un peu plus compliqué à
+programmer à la main, mais cela permet de se passer de microcode, et
+donc d’avoir des gains très fort en performances et surtout en dissipation
+d’énergie.
+
+EQU est équivalent à #define en c
+
+
+Intérêt du S : 
+méthode longue
+SUB r1, r1, #1  ; Je retire 1 (mais les flags restent aveugles)
+    CMP r1, #0      ; Je dois rajouter une comparaison pour allumer le flag Zéro
+    BEQ fin         ; Je saute à la fin si le flag Zéro est allumé 
+
+
+méthode opti : 
+SUBS r1, r1, #1 ; Je retire 1 ET le flag Zéro s'allume TOUT SEUL si r1 tombe à 0 !
+    BEQ fin         ; Je peux sauter directement sans utiliser de CMP
+
+PK R15 change de valeur -> contient adr de la prochaine instruction
+à quoi sert la pile ? à gérer des fonctions
+et le tas ? les données dynamiques.
+la pile descend et le tas monte. 
+
+pk on ne peut pas bouger qqch d'1 truc mémoire vers un autre ? du aux pipelines
+où sont stockées les valeurs des variables ? au dessus du programme.
+
+Visual -> ARM little endian (par défaut)
+adressage indirect -> pointeurs.
+communication CPU/mémoire : /bus 
+taille du bus permet de dféfinir l'espace mémoire adressable par le CPU
+invention de Von Neumann : faire en sorte que les instructions CPU soient des données comme les autres
+

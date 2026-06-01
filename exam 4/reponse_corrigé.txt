@@ -1,0 +1,58 @@
+Question 0x00
+
+- Mettre ici votre nom et prénom -
+
+Question 0x01
+
+- me brosser, on ne peut pas augmenter la taille des registres du CPU
+
+Question 0x02
+
+- s'empilent
+
+Question 0x03
+
+- ce qui gère l'accès à la mémoire
+
+Question 0x04
+
+- sont stockées dans la mémoire, ce sont des données comme les autres
+
+Question 0x11
+
+- erreur 1 : numéro de la ligne en erreur : 62
+- erreur 1 : correction de la ligne : LSL R0, R0, #2
+- erreur 2 : numéro de la ligne en erreur : 74
+- erreur 2 : correction de la ligne : LDR R0, [R11, #4*5]
+
+Question 0x12 
+
+Adresse     Valeur      Nom                                 Signification    
+FF000000 -----------------------------------------------------------------------
+FEFFFFFC      15        a                                   variable locale main    
+FEFFFFF8      20        b                                   variable locale main
+FEFFFFF4                result                              variable locale main    
+FEFFFFF0      15        a                                   parametre between
+FEFFFFEC      20        b                                   parametre between
+FEFFFFE8                valeur retour                       valeur retour between  
+FEFFFFE4      0x38      LR                                  sauvegarde between
+FEFFFFE0 0xFF000000     BP main                             sauvegarde between
+FEFFFFDC        xxx     r0/r1                               sauvegarde between
+FEFFFFD8        xxx     r0/r1                               sauvegarde between     
+FEFFFFD4        60      c                                   variable locale between
+FEFFFFD0         5      d                                   variable locale between
+FEFFFFCC         0      e                                   variable locale between
+FEFFFFC8 0xFEFFFFD4     &c                                  parametre inside
+FEFFFFC4         15     a                                   parametre inside (b)  
+FEFFFFC0         20     b                                   parametre outside 
+FEFFFFBC 0xFEFFFFD0     &d                                  parametre outside 
+FEFFFFB8       0xB0     LR                                  sauvegarde outside
+FEFFFFB4 0xFEFFFFD8     BP                                  sauvegarde outside      
+FEFFFFB0        xxx     r0/r1                               sauvegarde outside
+FEFFFFAC        xxx     r0/r1                               sauvegarde outside    BP SP
+FEFFFFA8 
+
+Question 0x13
+
+Valeur affichée : 65
+

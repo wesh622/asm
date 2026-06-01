@@ -1,0 +1,11 @@
+Erreurs fréquentes bouthier 
+
+Décalage par la gauche au lieu de par la droite (LSL au lieu de RSL)
+BNE au lieu de BEQ
+incrémenter la pile au lieu de la décrémenter
+Erreurs hexa/décimal/binaire (plus simple est de sem ettre en mode décimal pour comparer  ?)
+inversions deux paramètres (attention pile)
+vérification que les valeurs sont bien les bonnes (Ox1F au lieu de 0x0F)
+ne pas bien décaler R11 lors de l'appel d'une fonction
+B au lieu de BL
+rotation gauche (LSL) au lieu de rotation droite (LSR) et inversement
